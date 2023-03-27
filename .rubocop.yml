@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**/*"
+  DisplayCopNames: true
+  NewCops: enable
+
+  
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
