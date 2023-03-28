@@ -84,4 +84,8 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  # To allow requests to fmapibridgemanager.onrender.com make sure it is a valid hostname エラーの対応のために追加
+  config.hosts << "fmapibridgemanager.onrender.com"
+
 end
