@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 unless Rails.env.test?
-  host = ENV['REDIS_HOST']
-  port = ENV['REDIS_PORT']
+  host = ENV.fetch('REDIS_HOST', nil)
+  port = ENV.fetch('REDIS_PORT', nil)
   SIDEKIQ_DB = 9
 
   sidekiq_url = "redis://#{host}:#{port}/#{SIDEKIQ_DB}"
