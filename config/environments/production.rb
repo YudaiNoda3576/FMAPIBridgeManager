@@ -88,6 +88,5 @@ Rails.application.configure do
   end
 
   # To allow requests to fmapibridgemanager.onrender.com make sure it is a valid hostname エラーの対応のために追加
-  config.hosts << "fmapibridgemanager.onrender.com"
-
+  config.hosts << 'fmapibridgemanager.onrender.com'
 end
