@@ -5,7 +5,6 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前", "tel": "0120123456", "work_type": "墓じまいをしたい" }}' "http://localhost:8000/api/v1/boseki_info"
-
     data = Soukyakukanri.new(
       media_name: MEDIA_NAME,
       name: boseki_info_params[:name],
@@ -14,6 +13,9 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
+  rescue StandardError => e
+    Rails.logger.error e
+    render json: { status: 500, error: "Failure: #{e}" }
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -29,6 +31,9 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
       email: boseki_info_params[:email] || data.email
     )
     render json: { status: :ok, record_id: data.record_id }
+  rescue StandardError => e
+    Rails.logger.error e
+    render json: { status: 500, error: "Failure: #{e}" }
   end
   # rubocop:enable Metrics/AbcSize
 
