@@ -20,6 +20,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
 
   def update
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245444", "cemetery_name": "本能寺" }}' "http://localhost:8000/api/v1/boseki_info"
+    # ページ遷移するごとにキー名が変わっていきます、cemetery_name, cemetery_addr, work_date, ['addr','area'], 'mitsumori', 'email' 
     data = Soukyakukanri.find(boseki_info_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
