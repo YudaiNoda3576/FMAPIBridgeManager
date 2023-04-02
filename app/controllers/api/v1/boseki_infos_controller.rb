@@ -8,7 +8,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
     data = Soukyakukanri.new(
       media_name: MEDIA_NAME,
       name: boseki_info_params[:name],
-      tel: boseki_info_params[:tel],
+      tel1: boseki_info_params[:tel],
       work_type: boseki_info_params[:work_type]
     )
     data.save
