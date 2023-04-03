@@ -13,6 +13,8 @@ x-template: &rails
     FILEMAKER_DB: $FILEMAKER_DB
     CLARIS_ID: $CLARIS_ID
     CLARIS_PASS: $CLARIS_PASS
+    BASIC_USER: $BASIC_USER
+    BASIC_PASS: $BASIC_PASS
 
 services:
   web:
