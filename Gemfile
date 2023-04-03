@@ -6,11 +6,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.1'
 
 gem 'bootsnap', require: false
+gem 'fmrest'
+gem 'fmrest-cloud'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '7.0.4.3'
+gem 'redis'
 gem 'sidekiq'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
