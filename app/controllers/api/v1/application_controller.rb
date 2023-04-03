@@ -7,7 +7,7 @@ class Api::V1::ApplicationController < ApplicationController
   private
 
   def basic_auth
-    return unless ENV.fetch('BASIC_USER', nil) || ENV.fetch('BASIC_PASS', nil)
+    return unless ENV.fetch('BASIC_USER', nil).nil? || ENV.fetch('BASIC_PASS', nil).nil?
 
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV.fetch('BASIC_USER', nil) && password == ENV.fetch('BASIC_PASS', nil)
