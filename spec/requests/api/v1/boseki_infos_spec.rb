@@ -53,7 +53,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
         }
       }
     end
-    let(:data) { create(:soukyakukanri) }
+    let(:data) { build(:soukyakukanri) }
 
     context 'FMのレコード更新成功時' do
       let(:fm_response) { { recordId: record_id } }
