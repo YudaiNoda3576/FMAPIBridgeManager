@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :tests, only: %i[index create]
+      resource :boseki_info, only: %i[create update]
     end
   end
 end
