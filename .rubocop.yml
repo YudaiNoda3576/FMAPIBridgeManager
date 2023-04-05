@@ -24,3 +24,9 @@ Metrics/BlockLength:
 
 Layout/LineLength:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false

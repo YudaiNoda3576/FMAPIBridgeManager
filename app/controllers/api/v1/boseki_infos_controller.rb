@@ -36,7 +36,6 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
                                  :mitsumori, :email)
   end
 
-  # rubocop:disable Metrics/AbcSize
   def update_params(data)
     {
       cemetery_name: boseki_info_params[:cemetery_name] || data.cemetery_name,
@@ -47,5 +46,4 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
       email: boseki_info_params[:email] || data.email
     }
   end
-  # rubocop:enable Metrics/AbcSize
 end
