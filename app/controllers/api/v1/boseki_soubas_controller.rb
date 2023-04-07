@@ -4,7 +4,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
   MEDIA_NAME = '墓石相場net'
 
   def create
-  # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"
+    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"
     data = Soukyakukanri.new(
       media_name: MEDIA_NAME,
       construction_type: boseki_souba_params[:cf_ctype],
@@ -21,11 +21,11 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
     Rails.logger.error e
     render json: { status: 500, error: "Failure: #{e}" }
   end
-  
+
   private
 
   def boseki_souba_params
-    params.require(:data).permit(:record_id, :cf_ctype, :cf_gyard, :cf_name, 
+    params.require(:data).permit(:record_id, :cf_ctype, :cf_gyard, :cf_name,
                                  :cf_phone, :cf_pref, :cf_address, :cf_email, :cf_misc)
   end
 end

@@ -7,14 +7,14 @@ RSpec.describe 'Api::V1::BosekiSoubas', type: :request do
     let(:params) do
       {
         data: {
-          cf_ctype: "新たにお墓を建てたい",
-          cf_gyard: "わかりません", 
-          cf_name: "名前",
-          cf_phone: "0120123456",
-          cf_pref: "東京", 
-          cf_address: "新宿区", 
-          cf_email: "test.mail", 
-          cf_misc: "100万円"
+          cf_ctype: '新たにお墓を建てたい',
+          cf_gyard: 'わかりません',
+          cf_name: '名前',
+          cf_phone: '0120123456',
+          cf_pref: '東京',
+          cf_address: '新宿区',
+          cf_email: 'test.mail',
+          cf_misc: '100万円'
         }
       }
     end
