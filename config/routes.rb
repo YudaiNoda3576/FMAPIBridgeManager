@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :tests, only: %i[index create]
       resource :boseki_info, only: %i[create update]
+      get 'debug/show_env', to: 'debug#show_env'
     end
   end
 end
