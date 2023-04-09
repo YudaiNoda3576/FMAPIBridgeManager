@@ -3,7 +3,7 @@ services:
     name: sidekiq-redis
     region: ohio
     maxmemoryPolicy: noeviction
-    ipAllowList: [] # only allow internal connections
+    ipAllowList: [0.0.0.0] # allow all IPs
   - type: worker
     name: sidekiq-worker
     env: ruby
@@ -20,10 +20,9 @@ services:
         sync: false
   - type: web
     name: rails-web
-    env: ruby
+    env: docker
     region: singapore
-    buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean;
-    startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: REDIS_URL
         fromService:
