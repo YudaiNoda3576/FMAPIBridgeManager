@@ -37,14 +37,21 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
 
   def update_params(data)
     {
-      budget: reform_mitsumori_params[:budget] || data.budget,
+      budget: reform_mitsumori_params[:budget] || data.budget, # FM上にカラムないです
       building_type: reform_mitsumori_params[:building_type] || data.building_type,
-      construction_type: reform_mitsumori_params[:point] || data.construction_type,
-      building_age: reform_mitsumori_params[:building_age] || data.building_age,
+      construction_type: reform_mitsumori_params[:point[]] || data.construction_type,
+      building_age: reform_mitsumori_params[:building_age] || data.building_age, 
       contact_time: reform_mitsumori_params[:contact_time] || data.contact_time,
       contact_note: reform_mitsumori_params[:contact_remark] || data.contact_note,
-      email: reform_mitsumori_params[:email] || data.email
+      email: reform_mitsumori_params[:email] || data.email,
       customer_request: reform_mitsumori_params[:mitsumori] || data.customer_request,
     }
   end
 end
+
+    # 以下のいずれかなら status はOKになる　DBへは登録されず
+    # {point: []}
+    #  :point
+    # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": "トイレ" }}' "http://localhost:8000/api/v1/reform_mitsumori" 
+    # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": "[トイレ]" }}' "http://localhost:8000/api/v1/reform_mitsumori"
+    # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": [トイレ] }}' "http://localhost:8000/api/v1/reform_mitsumori"
