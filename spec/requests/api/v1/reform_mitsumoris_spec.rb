@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::BosekiInfos', type: :request do
+RSpec.describe 'Api::V1::ReformMitsumoris', type: :request do
   describe '#create' do
     let(:params) do
       {
         data: {
-          name: '織田信長',
+          addr: "東京都新宿区",
+          name: "山田太郎",
           tel: '012012345678',
-          work_type: '墓じまいをしたい'
         }
       }
     end
@@ -23,7 +23,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
         allow(data).to receive(:record_id).and_return(fm_response[:recordId])
       end
       it 'FMのレコードIDを返す' do
-        post(api_v1_boseki_info_path, params:)
+        post(api_v1_reform_mitsumori_path, params:)
         expect(response).to have_http_status :ok
         expect(JSON.parse(response.body)['record_id']).to eq fm_response[:recordId]
       end
@@ -36,7 +36,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
         allow(data).to receive(:save).and_raise(StandardError)
       end
       it 'status: 500 を返す (レコードIDは含まれない)' do
-        post(api_v1_boseki_info_path, params:)
+        post(api_v1_reform_mitsumori_path, params:)
         expect(response).to have_http_status :ok
         expect(JSON.parse(response.body)['status']).to eq 500
       end
@@ -48,7 +48,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
     let(:params) do
       {
         data: {
-          cemetery_name: '本能寺',
+          point: ["トイレ","台所"],
           record_id:
         }
       }
@@ -65,7 +65,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
       end
 
       it 'FMのレコードIDを返す' do
-        patch(api_v1_boseki_info_path, params:)
+        patch(api_v1_reform_mitsumori_path, params:)
         expect(response).to have_http_status :ok
         expect(JSON.parse(response.body)['record_id']).to eq fm_response[:recordId]
       end
@@ -77,7 +77,7 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
       end
 
       it 'status: 500 を返す (レコードIDは含まれない)' do
-        patch(api_v1_boseki_info_path, params:)
+        patch(api_v1_reform_mitsumori_path, params:)
         expect(response).to have_http_status :ok
         expect(JSON.parse(response.body)['status']).to eq 500
       end

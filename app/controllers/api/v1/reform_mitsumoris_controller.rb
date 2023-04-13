@@ -21,9 +21,8 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
   def update
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "budget": "30万円以内" }}' "http://localhost:8000/api/v1/reform_mitsumori"
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point": ["トイレ","台所"] }}' "http://localhost:8000/api/v1/reform_mitsumori"
-    # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "contact_time": ["午前","午後"] }}' "http://localhost:8000/api/v1/reform_mitsumori"
+    # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "contact_time": ["午前","午後"] ,"contact_remark": "テスト" }}' "http://localhost:8000/api/v1/reform_mitsumori"
     # ページ遷移するごとにキー名が変わっていきます(7ステップ)、budget, building_type, point[], building_age, [contact_time[]　, contact_remark], email, mitsumori
-    # binding.pry
     data = Soukyakukanri.find(reform_mitsumori_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
@@ -36,7 +35,6 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
 
   def reform_mitsumori_params
     params.require(:data).permit(:record_id, :pref, :city, :cho, :addr, :name, :tel, :building_type, :contact_remark, :budget, :building_age, :email, :mitsumori, point: [], contact_time: [])
-    # params.require(:data).permit(:record_id, point: [])
   end
 
   def update_params(data)
@@ -57,10 +55,3 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
     array.join(',')
   end
 end
-
-# 以下のいずれかなら status はOKになる　DBへは登録されず
-# {point: []}
-#  :point
-# curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": "トイレ" }}' "http://localhost:8000/api/v1/reform_mitsumori"
-# curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": "[トイレ]" }}' "http://localhost:8000/api/v1/reform_mitsumori"
-# curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point[]": [トイレ] }}' "http://localhost:8000/api/v1/reform_mitsumori"
