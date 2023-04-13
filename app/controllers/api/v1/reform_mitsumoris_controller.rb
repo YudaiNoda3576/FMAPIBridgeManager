@@ -41,9 +41,9 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
     {
       budget: reform_mitsumori_params[:budget] || data.budget,
       building_type: reform_mitsumori_params[:building_type] || data.building_type,
-      construction_type: convert_array_to_string(reform_mitsumori_params[:point])|| data.construction_type,
+      construction_type: convert_array_to_string(reform_mitsumori_params[:point]) || data.construction_type,
       building_age: reform_mitsumori_params[:building_age] || data.building_age,
-      contact_time: convert_array_to_string(reform_mitsumori_params[:contact_time])|| data.contact_time,
+      contact_time: convert_array_to_string(reform_mitsumori_params[:contact_time]) || data.contact_time,
       contact_note: reform_mitsumori_params[:contact_remark] || data.contact_note,
       email: reform_mitsumori_params[:email] || data.email,
       customer_request: reform_mitsumori_params[:mitsumori] || data.customer_request
@@ -51,7 +51,8 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
   end
 
   def convert_array_to_string(array)
-    return  nil if array.nil?
+    return nil if array.nil?
+
     array.join(',')
   end
 end

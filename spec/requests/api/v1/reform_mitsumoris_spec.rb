@@ -7,9 +7,9 @@ RSpec.describe 'Api::V1::ReformMitsumoris', type: :request do
     let(:params) do
       {
         data: {
-          addr: "東京都新宿区",
-          name: "山田太郎",
-          tel: '012012345678',
+          addr: '東京都新宿区',
+          name: '山田太郎',
+          tel: '012012345678'
         }
       }
     end
@@ -48,7 +48,7 @@ RSpec.describe 'Api::V1::ReformMitsumoris', type: :request do
     let(:params) do
       {
         data: {
-          point: ["トイレ","台所"],
+          point: %w[トイレ 台所],
           record_id:
         }
       }
