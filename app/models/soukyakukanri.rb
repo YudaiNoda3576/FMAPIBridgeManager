@@ -9,8 +9,8 @@ class Soukyakukanri < FmRest::Layout('送客管理')
     building_type: '建物の種類',
     construction_type: '工事種別',
     work_date: '完成希望時期',
-    contact_time: 'AA_電話確認', # 本来は[連絡希望時間]だがこの名前のフィールドが存在しないので、一旦違うものに入れてある
-    contact_note: 'X_最終架電結果', # 本来は[連絡留意事項]だがこの名前のフィールドが存在しないので、一旦違うものに入れてある
+    contact_time: '連絡希望時間',
+    contact_note: '連絡留意事項',
     customer_request: 'ご要望',
     email: 'J_メールアドレス',
     area: '建物の面積',
