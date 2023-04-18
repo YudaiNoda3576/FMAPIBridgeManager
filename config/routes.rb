@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :tests, only: %i[index create]
       resource :boseki_info, only: %i[create update]
+      resource :boseki_souba, only: %i[create]
       resource :genjo_hikaku, only: %i[create update]
       resource :reform_mitsumori, only: %i[create update]
       resource :reien_info, only: %i[create]
