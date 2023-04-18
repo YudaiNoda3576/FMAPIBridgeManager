@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resource :boseki_souba, only: %i[create]
       resource :genjo_hikaku, only: %i[create update]
       resource :reform_mitsumori, only: %i[create update]
+      resource :kaitai_hikaku, only: %i[create]
       resource :reien_info, only: %i[create]
       get 'debug/show_env', to: 'debug#show_env'
     end
