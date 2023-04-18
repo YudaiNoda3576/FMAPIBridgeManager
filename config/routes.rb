@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       resources :tests, only: %i[index create]
       resource :boseki_info, only: %i[create update]
       resource :boseki_souba, only: %i[create]
+      resource :genjo_hikaku, only: %i[create update]
+      resource :reform_mitsumori, only: %i[create update]
+      resource :reien_info, only: %i[create]
+      get 'debug/show_env', to: 'debug#show_env'
     end
   end
 end
