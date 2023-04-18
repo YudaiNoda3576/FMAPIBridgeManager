@@ -6,4 +6,6 @@ FileMaker API に接続するためのアプリケーション
 
 `localhost:8000`
 
-
+# 備考
+* FMとのマッピングはfmrest-ruby gemを使用しています。
+  * https://github.com/beezwax/fmrest-ruby
