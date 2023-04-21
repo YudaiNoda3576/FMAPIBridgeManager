@@ -36,7 +36,6 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
                                  :area, :email)
   end
 
-  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
   def update_params(data)
     {
       prefecture: "#{data.prefecture}#{gaiheki_info_params[:addr]}" || data.prefecture, # 前画面で入力された市町村と結合
