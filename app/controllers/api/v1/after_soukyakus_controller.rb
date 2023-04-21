@@ -21,10 +21,10 @@ class Api::V1::AfterSoukyakusController < Api::V1::ApplicationController
   # 改行を入れて元のデータと結合する
   def add_contractor(data)
     {
-      open_introduction: "#{data.open_introduction}\n#{after_soukyaku_params[:open_introduction].gsub(',', "\n")}" || data.open_introduction,
-      invitation: "#{data.invitation}\n#{after_soukyaku_params[:invitation].gsub(',', "\n")}" || data.invitatione,
-      participation: "#{data.participation}\n#{after_soukyaku_params[:participation].gsub(',', "\n")}" || data.participation,
-      nonparticipation: "#{data.nonparticipation}\n#{after_soukyaku_params[:nonparticipation].gsub(',', "\n")}" || data.nonparticipation
+      open_introduction: "#{data.open_introduction}\n#{after_soukyaku_params[:open_introduction]&.gsub(',', "\n")}" || data.open_introduction,
+      invitation: "#{data.invitation}\n#{after_soukyaku_params[:invitation]&.gsub(',', "\n")}" || data.invitatione,
+      participation: "#{data.participation}\n#{after_soukyaku_params[:participation]&.gsub(',', "\n")}" || data.participation,
+      nonparticipation: "#{data.nonparticipation}\n#{after_soukyaku_params[:nonparticipation]&.gsub(',', "\n")}" || data.nonparticipation
     }
   end
 end
