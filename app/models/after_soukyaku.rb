@@ -7,4 +7,21 @@ class AfterSoukyaku < FmRest::Layout('【カード】B_送客後ユーザー')
     participation: '営業参加成立業者',
     nonparticipation: '営業参加不成立業者'
   )
+
+  def update_contractor_fields(params)
+    update(
+      open_introduction: updated_field(open_introduction, params[:open_introduction]),
+      invitation: updated_field(invitation, params[:invitation]),
+      participation: updated_field(participation, params[:participation]),
+      nonparticipation: updated_field(nonparticipation, params[:nonparticipation])
+    )
+  end
+
+  private
+
+  def updated_field(original_data, new_data)
+    return original_data if new_data.nil?
+
+    "#{original_data}\n#{new_data.gsub(',', "\n")}"
+  end
 end
