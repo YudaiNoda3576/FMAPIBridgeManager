@@ -21,6 +21,7 @@ class AfterSoukyaku < FmRest::Layout('【カード】B_送客後ユーザー')
 
   def updated_field(original_data, new_data)
     return original_data if new_data.nil?
+    return new_data.gsub(',', "\n") if original_data.empty?
 
     "#{original_data}\n#{new_data.gsub(',', "\n")}"
   end
