@@ -21,6 +21,7 @@ class Soukyakukanri < FmRest::Layout('送客管理')
     cemetery_name: '霊園名',
     cemetery_addr: '墓所住所',
     tel2: 'L_電話番号2',
-    kana: 'I_フリガナ'
+    kana: 'I_フリガナ',
+    chat: 'チャット'
   )
 end
