@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::BosuiIkkatsusController < Api::V1::ApplicationController
-  MEDIA_NAME = '防水工事セレクトナビ'
+  MEDIA_NAME = '防水工事一括net'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"position": "ベランダの防水工事", "building_type": "一戸建て住宅", "addr": "愛知県名古屋市1-1-1", "name": "名前", "tel": "0120123456" }}' "http://localhost:8000/api/v1/bosui_ikkatsu"
