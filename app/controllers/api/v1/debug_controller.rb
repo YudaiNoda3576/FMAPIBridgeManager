@@ -6,7 +6,6 @@ class Api::V1::DebugController < Api::V1::ApplicationController
 
   def all_records
     records = Soukyakukanri.all
-    binding.pry
     render json: { status: :ok, records: records }
   end
 end

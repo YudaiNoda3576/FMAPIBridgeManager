@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resource :kaitai_hikaku, only: %i[create]
       resource :reien_info, only: %i[create]
       get 'debug/show_env', to: 'debug#show_env'
-      get 'debug/all_records', to: 'debug#all_rocords'
+      get 'debug/all_records', to: 'debug#all_records'
     end
   end
 end
