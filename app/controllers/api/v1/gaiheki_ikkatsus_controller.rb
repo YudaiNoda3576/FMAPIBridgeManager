@@ -5,7 +5,7 @@ class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"position": "工事種別", "building_type": "建物の種類", "addr": "長野県松本市1-1-1", "name": "名前", "tel": "012012345678" }}' "http://localhost:8000/api/v1/gaiheki_ikkatsu"
-    data = Soukyakukanri.new(
+    data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
       construction_type: gaiheki_ikkatsu_params[:position],
       building_type: gaiheki_ikkatsu_params[:building_type],

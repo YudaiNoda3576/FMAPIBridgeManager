@@ -5,7 +5,7 @@ class Api::V1::YanekoujiInfosController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"position": "工事種別", "addr": "東京都新宿区1-1-1", "name": "名前", "tel": "012012345678" }}' "http://localhost:8000/api/v1/yanekouji_info"
-    data = Soukyakukanri.new(
+    data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
       construction_type: yanekouji_info_params[:position],
       prefecture: yanekouji_info_params[:addr],
@@ -22,7 +22,7 @@ class Api::V1::YanekoujiInfosController < Api::V1::ApplicationController
   def update
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": { "record_id": "245535", "area": "100"}}' "http://localhost:8000/api/v1/yanekouji_info"
     # ページ遷移するごとにキー名が変わっていきます、area, work_date, [contact_time, contact_remark], email, mitsumori
-    data = Soukyakukanri.find(yanekouji_info_params[:record_id])
+    data = SunlifeSoukyakukanri.find(yanekouji_info_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
   rescue StandardError => e

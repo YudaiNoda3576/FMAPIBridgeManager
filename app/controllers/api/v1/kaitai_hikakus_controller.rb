@@ -5,7 +5,7 @@ class Api::V1::KaitaiHikakusController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "一戸建て", "addr": "北海道札幌市中央区", "name": "徳川家康", "tel": "01201234567", "mitsumori": "要望" }}' "http://localhost:8000/api/v1/kaitai_hikaku"
-    data = Soukyakukanri.new(
+    data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
       building_type: kaitai_hikaku_params[:building_type],
       prefecture: kaitai_hikaku_params[:addr],
