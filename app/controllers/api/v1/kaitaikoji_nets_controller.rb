@@ -5,7 +5,7 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "アパート", "floor": "3", "area": "20", "addr": "東京都板橋区1-11-1", "name": "織田信長", "tel": "0120123456", "email": "hogehoge@hoge.com", "mitsumori": "aaaaa" }}' "http://localhost:8000/api/v1/kaitaikoji_net"
-    data = Soukyakukanri.new(
+    data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       building_type: kaitaikoji_net_params[:building_type],
       floor: kaitaikoji_net_params[:floor],

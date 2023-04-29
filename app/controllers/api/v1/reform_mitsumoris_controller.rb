@@ -5,7 +5,7 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "東京都港区お台場1-2-3", "name": "山田太郎", "tel": "09012345678" }}' "http://localhost:8000/api/v1/reform_mitsumori"
-    data = Soukyakukanri.new(
+    data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       addr: reform_mitsumori_params[:prefecture],
       name: reform_mitsumori_params[:name],
@@ -22,8 +22,8 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "budget": "30万円以内" }}' "http://localhost:8000/api/v1/reform_mitsumori"
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "point": ["トイレ","台所"] }}' "http://localhost:8000/api/v1/reform_mitsumori"
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245551", "contact_time": ["午前","午後"] ,"contact_remark": "テスト" }}' "http://localhost:8000/api/v1/reform_mitsumori"
-    # ページ遷移するごとにキー名が変わっていきます(7ステップ)、budget, building_type, point[], building_age, [contact_time[]　, contact_remark], email, mitsumori
-    data = Soukyakukanri.find(reform_mitsumori_params[:record_id])
+    # ページ遷移するごとにキー名が変わっていきます(7ステップ)、budget, building_type, point[], building_age, [contact_time[] , contact_remark], email, mitsumori
+    data = SaftaSoukyakukanri.find(reform_mitsumori_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
   rescue StandardError => e

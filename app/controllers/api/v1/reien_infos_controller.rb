@@ -5,7 +5,7 @@ class Api::V1::ReienInfosController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前", "tel": "0120123456" }}' "http://localhost:8000/api/v1/reien_info"
-    data = Soukyakukanri.new(
+    data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       name: reien_info_params[:name],
       tel1: reien_info_params[:tel]
