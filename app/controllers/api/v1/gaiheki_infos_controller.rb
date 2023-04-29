@@ -4,12 +4,13 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
   MEDIA_NAME = '外壁塗装セレクトナビ'
 
   def create
-    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "青森県弘前市", "name": "名前", "tel": "0120123456"}}' "http://localhost:8000/api/v1/gaiheki_info"
+    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "青森県弘前市", "name": "名前", "tel": "0120123456", "chat": "LINE（ライン）"}}' "http://localhost:8000/api/v1/gaiheki_info"
     data = Soukyakukanri.new(
       media_name: MEDIA_NAME,
       prefecture: gaiheki_info_params[:addr],
       name: gaiheki_info_params[:name],
-      tel1: gaiheki_info_params[:tel]
+      tel1: gaiheki_info_params[:tel],
+      chat: gaiheki_info_params[:chat]
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
@@ -32,7 +33,7 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
   private
 
   def gaiheki_info_params
-    params.require(:data).permit(:record_id, :addr, :name, :tel, :building_type, :position, :work_date, :company,
+    params.require(:data).permit(:record_id, :addr, :name, :tel, :chat, :building_type, :position, :work_date, :company,
                                  :area, :email)
   end
 
