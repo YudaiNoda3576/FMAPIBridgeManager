@@ -7,9 +7,9 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "東京都港区お台場1-2-3", "name": "山田太郎", "tel": "09012345678" }}' "http://localhost:8000/api/v1/reform_mitsumori"
     data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
-      addr: reform_mitsumori_params[:prefecture],
+      prefecture: reform_mitsumori_params[:addr],
       name: reform_mitsumori_params[:name],
-      tel: reform_mitsumori_params[:tel]
+      tel1: reform_mitsumori_params[:tel]
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
