@@ -9,7 +9,7 @@ RSpec.describe 'Api::V1::Bosuis', type: :request do
         data: {
           addr: '愛知県名古屋市中区1-1-1',
           name: '織田信長',
-          tel: '012012345678',
+          tel: '012012345678'
         }
       }
     end
@@ -17,8 +17,8 @@ RSpec.describe 'Api::V1::Bosuis', type: :request do
     context 'FMのレコード作成成功時' do
       let(:fm_response) { { recordId: '147' } }
       before do
-        data = instance_double(Soukyakukanri)
-        allow(Soukyakukanri).to receive(:new).and_return(data)
+        data = instance_double(SaftaSoukyakukanri)
+        allow(SaftaSoukyakukanri).to receive(:new).and_return(data)
         allow(data).to receive(:save).and_return(true)
         allow(data).to receive(:record_id).and_return(fm_response[:recordId])
       end
@@ -31,8 +31,8 @@ RSpec.describe 'Api::V1::Bosuis', type: :request do
 
     context 'FMのレコード作成失敗時' do
       before do
-        data = instance_double(Soukyakukanri)
-        allow(Soukyakukanri).to receive(:new).and_return(data)
+        data = instance_double(SaftaSoukyakukanri)
+        allow(SaftaSoukyakukanri).to receive(:new).and_return(data)
         allow(data).to receive(:save).and_raise(StandardError)
       end
       it 'status: 500 を返す (レコードIDは含まれない)' do
@@ -53,13 +53,13 @@ RSpec.describe 'Api::V1::Bosuis', type: :request do
         }
       }
     end
-    let(:data) { build(:soukyakukanri) }
+    let(:data) { build(:safta_soukyakukanri) }
 
     context 'FMのレコード更新成功時' do
       let(:fm_response) { { recordId: record_id } }
 
       before do
-        allow(Soukyakukanri).to receive(:find).and_return(data)
+        allow(SaftaSoukyakukanri).to receive(:find).and_return(data)
         allow(data).to receive(:update).and_return(true)
         allow(data).to receive(:record_id).and_return(fm_response[:recordId])
       end
@@ -73,7 +73,7 @@ RSpec.describe 'Api::V1::Bosuis', type: :request do
 
     context 'FMのレコード更新失敗時' do
       before do
-        allow(Soukyakukanri).to receive(:find).and_raise(StandardError)
+        allow(SaftaSoukyakukanri).to receive(:find).and_raise(StandardError)
       end
 
       it 'status: 500 を返す (レコードIDは含まれない)' do

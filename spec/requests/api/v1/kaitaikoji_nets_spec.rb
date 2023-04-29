@@ -21,8 +21,8 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
     context 'FMのレコード作成成功時' do
       let(:fm_response) { { recordId: '147' } }
       before do
-        data = instance_double(Soukyakukanri)
-        allow(Soukyakukanri).to receive(:new).and_return(data)
+        data = instance_double(SaftaSoukyakukanri)
+        allow(SaftaSoukyakukanri).to receive(:new).and_return(data)
         allow(data).to receive(:save).and_return(true)
         allow(data).to receive(:record_id).and_return(fm_response[:recordId])
       end
@@ -35,8 +35,8 @@ RSpec.describe 'Api::V1::BosekiInfos', type: :request do
 
     context 'FMのレコード作成失敗時' do
       before do
-        data = instance_double(Soukyakukanri)
-        allow(Soukyakukanri).to receive(:new).and_return(data)
+        data = instance_double(SaftaSoukyakukanri)
+        allow(SaftaSoukyakukanri).to receive(:new).and_return(data)
         allow(data).to receive(:save).and_raise(StandardError)
       end
       it 'status: 500 を返す (レコードIDは含まれない)' do
