@@ -19,8 +19,7 @@ Rails.application.routes.draw do
       resource :kaitai_hikaku, only: %i[create]
       resource :reien_info, only: %i[create]
       resource :bosui, only: %i[create update]
-      get 'debug/show_env', to: 'debug#show_env'
-      get 'debug/all_records', to: 'debug#all_records'
+      get 'debug/records_by_media_name', to: 'debug#records_by_media_name'
     end
   end
 end
