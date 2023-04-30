@@ -8,7 +8,7 @@ class Api::V1::DebugController < Api::V1::ApplicationController
     records = {}
     case params[:media_name]
     when 'Safta'
-      records = Soukyakukanri.all
+      records = SaftaSoukyakukanri.all
     when 'Sunlife'
       records = SunlifeSoukyakukanri.all
     else
