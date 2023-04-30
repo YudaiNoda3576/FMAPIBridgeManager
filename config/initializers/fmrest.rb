@@ -23,8 +23,8 @@ FmRest.token_store = FmRest::TokenStore::Redis.new(url: token_store_url)
 # FmRest.token_store = FmRest::TokenStore::Memory
 
 FmRest.default_connection_settings = {
-  host: ENV.fetch('FILEMAKER_HOST', nil),
-  database: ENV.fetch('FILEMAKER_DB', nil),
+  host: ENV.fetch('FILEMAKER_HOST_SAFTA', nil),
+  database: ENV.fetch('FILEMAKER_DB_SAFTA', nil),
   username: ENV.fetch('CLARIS_ID', nil),
   password: ENV.fetch('CLARIS_PASS', nil)
 }

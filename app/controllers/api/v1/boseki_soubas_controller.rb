@@ -5,7 +5,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"
-    data = Soukyakukanri.new(
+    data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
       construction_type: boseki_souba_params[:cf_ctype],
       cemetery_name: boseki_souba_params[:cf_gyard],

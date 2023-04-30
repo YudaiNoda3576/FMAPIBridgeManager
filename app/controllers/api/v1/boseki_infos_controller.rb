@@ -5,7 +5,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前", "tel": "0120123456", "work_type": "墓じまいをしたい" }}' "http://localhost:8000/api/v1/boseki_info"
-    data = Soukyakukanri.new(
+    data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       name: boseki_info_params[:name],
       tel1: boseki_info_params[:tel],
@@ -21,7 +21,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
   def update
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245444", "cemetery_name": "本能寺" }}' "http://localhost:8000/api/v1/boseki_info"
     # ページ遷移するごとにキー名が変わっていきます、cemetery_name, cemetery_addr, work_date, ['addr','area'], 'mitsumori', 'email'
-    data = Soukyakukanri.find(boseki_info_params[:record_id])
+    data = SaftaSoukyakukanri.find(boseki_info_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
   rescue StandardError => e

@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-class Soukyakukanri < FmRest::Layout('送客管理')
+class SunlifeSoukyakukanri < FmRest::Layout('送客管理')
+  self.fmrest_config = {
+    host: ENV.fetch('FILEMAKER_HOST_SUNLIFE', nil),
+    database: ENV.fetch('FILEMAKER_DB_SUNLIFE', nil),
+    username: ENV.fetch('CLARIS_ID', nil),
+    password: ENV.fetch('CLARIS_PASS', nil)
+  }
   attributes(
     media_name: 'F_外壁／防水',
     prefecture: 'E_都道府県',
@@ -18,7 +24,7 @@ class Soukyakukanri < FmRest::Layout('送客管理')
     budget: '予算',
     work_type: '施工内容',
     building_age: '建物の築年数',
-    cemetery_name: '霊園名',
+    cemetery_name: '墓所名',
     cemetery_addr: '墓所住所',
     tel2: 'L_電話番号2',
     kana: 'I_フリガナ',

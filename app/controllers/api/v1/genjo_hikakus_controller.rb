@@ -5,7 +5,7 @@ class Api::V1::GenjoHikakusController < Api::V1::ApplicationController
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "店舗", "addr": "栃木県宇都宮市1-1-1", "area": "30", "mitsumori": "要望", "name": "名前", "kana": "namae", "tel": "0120123456", "mobile": "09012345678", "email": "fugahoge@yahoo.hoge"}}' "http://localhost:8000/api/v1/genjo_hikaku"
-    data = Soukyakukanri.new(
+    data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       building_type: genjo_hikaku_params[:building_type],
       prefecture: genjo_hikaku_params[:addr],
