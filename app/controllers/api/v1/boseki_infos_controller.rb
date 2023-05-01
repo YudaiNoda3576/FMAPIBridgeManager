@@ -32,7 +32,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
   private
 
   def boseki_info_params
-    params.require(:data).permit(:record_id, :name, :tel, :work_type, :cemetery_name, :cemetery_addr, :addr, :area,
+    params.require(:data).permit(:record_id, :name, :tel, :work_type, :cemetery_name, :cemetery_addr, :addr, :area, :work_date,
                                  :mitsumori, :email)
   end
 
@@ -40,6 +40,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
     {
       cemetery_name: boseki_info_params[:cemetery_name] || data.cemetery_name,
       cemetery_addr: boseki_info_params[:cemetery_addr] || data.cemetery_addr,
+      work_date: boseki_info_params[:work_date] || data.work_date,
       contact_time: boseki_info_params[:addr] || data.contact_time,
       contact_note: boseki_info_params[:area] || data.contact_note,
       customer_request: boseki_info_params[:mitsumori] || data.customer_request,
