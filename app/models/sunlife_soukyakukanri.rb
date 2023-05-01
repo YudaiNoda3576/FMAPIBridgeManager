@@ -24,7 +24,7 @@ class SunlifeSoukyakukanri < FmRest::Layout('送客管理')
     budget: '予算',
     work_type: '施工内容',
     building_age: '建物の築年数',
-    cemetery_name: '墓所名',
+    cemetery_name: '墓石名',
     cemetery_addr: '墓所住所',
     tel2: 'L_電話番号2',
     kana: 'I_フリガナ',
