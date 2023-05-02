@@ -39,7 +39,7 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
 
   def update_params(data)
     {
-      prefecture: "#{data.prefecture}#{gaiheki_info_params[:addr]}" || data.prefecture, # 前画面で入力された市町村と結合
+      prefecture: gaiheki_info_params[:addr] || data.prefecture,
       building_type: gaiheki_info_params[:building_type] || data.building_type,
       construction_type: gaiheki_info_params[:position] || data.construction_type,
       work_date: gaiheki_info_params[:work_date] || data.work_date,
