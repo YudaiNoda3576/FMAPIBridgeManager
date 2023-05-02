@@ -4,11 +4,9 @@ class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
   MEDIA_NAME = '外壁塗装一括net'
 
   def create
-    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"position": "工事種別", "building_type": "建物の種類", "addr": "長野県松本市1-1-1", "name": "名前", "tel": "012012345678" }}' "http://localhost:8000/api/v1/gaiheki_ikkatsu"
+    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "長野県松本市1-1-1", "name": "名前", "tel": "012012345678" }}' "http://localhost:8000/api/v1/gaiheki_ikkatsu"
     data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
-      construction_type: gaiheki_ikkatsu_params[:position],
-      building_type: gaiheki_ikkatsu_params[:building_type],
       prefecture: gaiheki_ikkatsu_params[:addr],
       name: gaiheki_ikkatsu_params[:name],
       tel1: gaiheki_ikkatsu_params[:tel]
@@ -23,6 +21,6 @@ class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
   private
 
   def gaiheki_ikkatsu_params
-    params.require(:data).permit(:record_id, :position, :building_type, :addr, :name, :tel)
+    params.require(:data).permit(:record_id, :addr, :name, :tel, :building_type, :position, :work_date, :contact_time, :contact_remark, :email, :mitsumori)
   end
 end
