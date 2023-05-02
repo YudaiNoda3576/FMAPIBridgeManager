@@ -7,13 +7,13 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"
     data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
-      construction_type: boseki_souba_params[:cf_ctype],
-      cemetery_name: boseki_souba_params[:cf_gyard],
-      name: boseki_souba_params[:cf_name],
-      tel1: boseki_souba_params[:cf_phone],
+      cf_ctype: boseki_souba_params[:construction_type],
+      cf_gyard: boseki_souba_params[:cemetery_name],
+      cf_name: boseki_souba_params[:name],
+      cf_phone: boseki_souba_params[:tel1],
       cemetery_addr: "#{boseki_souba_params[:cf_pref]} #{boseki_souba_params[:cf_address]}",
-      email: boseki_souba_params[:cf_email],
-      customer_request: boseki_souba_params[:cf_misc]
+      cf_email: boseki_souba_params[:email],
+      cf_misc: boseki_souba_params[:customer_request]
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
