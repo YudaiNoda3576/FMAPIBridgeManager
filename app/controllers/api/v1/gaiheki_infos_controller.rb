@@ -33,18 +33,19 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
   private
 
   def gaiheki_info_params
-    params.require(:data).permit(:record_id, :addr, :name, :tel, :chat, :building_type, :position, :work_date, :company,
+    params.require(:data).permit(:record_id, :addr, :name, :tel, :chat, :building_type, :position, :work_date, :company, :mitsumori,
                                  :area, :email)
   end
 
   def update_params(data)
     {
-      prefecture: "#{data.prefecture}#{gaiheki_info_params[:addr]}" || data.prefecture, # 前画面で入力された市町村と結合
+      prefecture: gaiheki_info_params[:addr] || data.prefecture,
       building_type: gaiheki_info_params[:building_type] || data.building_type,
       construction_type: gaiheki_info_params[:position] || data.construction_type,
       work_date: gaiheki_info_params[:work_date] || data.work_date,
       contact_time: gaiheki_info_params[:company] || data.contact_time,
       contact_note: gaiheki_info_params[:area] || data.contact_note,
+      customer_request: gaiheki_info_params[:mitsumori] || data.customer_request,
       email: gaiheki_info_params[:email] || data.email
     }
   end
