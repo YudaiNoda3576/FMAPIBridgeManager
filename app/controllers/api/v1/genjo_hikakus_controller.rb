@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::GenjoHikakusController < Api::V1::ApplicationController
+  # TODO: メディア名をメディア計算式の値に合わせる
   MEDIA_NAME = '原状回復比較ナビ'
 
   def create

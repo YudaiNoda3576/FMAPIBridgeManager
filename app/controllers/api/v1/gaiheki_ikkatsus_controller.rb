@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
+  # TODO: メディア名をメディア計算式の値に合わせる
   MEDIA_NAME = '外壁塗装一括net'
 
   def create
