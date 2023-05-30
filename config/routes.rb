@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      resources :tests, only: %i[index create]
+      resources :tests, only: %i[index show create update destroy]
       resource :boseki_info, only: %i[create update]
       resource :gaiheki_info, only: %i[create update]
       resource :bosui_ikkatsu, only: %i[create update]
