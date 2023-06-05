@@ -2,7 +2,7 @@
 
 class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '墓石相場net'
+  MEDIA_NAME = '墓石'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"

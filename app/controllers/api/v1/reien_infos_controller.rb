@@ -2,7 +2,7 @@
 
 class Api::V1::ReienInfosController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '霊園ナビ'
+  MEDIA_NAME = '霊園'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前", "tel": "0120123456" }}' "http://localhost:8000/api/v1/reien_info"

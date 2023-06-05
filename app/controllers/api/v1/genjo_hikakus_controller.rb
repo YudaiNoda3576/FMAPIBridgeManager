@@ -2,7 +2,7 @@
 
 class Api::V1::GenjoHikakusController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '原状回復比較ナビ'
+  MEDIA_NAME = '原状'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "店舗", "addr": "栃木県宇都宮市1-1-1", "area": "30", "mitsumori": "要望", "name": "名前", "kana": "namae", "tel": "0120123456", "mobile": "09012345678", "email": "fugahoge@yahoo.hoge"}}' "http://localhost:8000/api/v1/genjo_hikaku"

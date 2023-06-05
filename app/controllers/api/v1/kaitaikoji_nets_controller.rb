@@ -2,7 +2,7 @@
 
 class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '解体工事比較ナビ'
+  MEDIA_NAME = '解体'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "アパート", "floor": "3", "area": "20", "addr": "東京都板橋区1-11-1", "name": "織田信長", "tel": "0120123456", "email": "hogehoge@hoge.com", "mitsumori": "aaaaa" }}' "http://localhost:8000/api/v1/kaitaikoji_net"

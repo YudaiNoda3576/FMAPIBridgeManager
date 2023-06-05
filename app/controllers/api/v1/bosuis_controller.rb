@@ -2,7 +2,7 @@
 
 class Api::V1::BosuisController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '防水工事セレクトナビ'
+  MEDIA_NAME = '防水'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "愛知県名古屋市中区1-1-1", "name": "織田信長", "tel": "0120123456" }}' "http://localhost:8000/api/v1/bosui"

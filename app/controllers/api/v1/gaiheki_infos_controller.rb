@@ -2,7 +2,7 @@
 
 class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '外壁塗装セレクトナビ'
+  MEDIA_NAME = '外壁'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "青森県弘前市", "name": "名前", "tel": "0120123456", "chat": "LINE（ライン）"}}' "http://localhost:8000/api/v1/gaiheki_info"
