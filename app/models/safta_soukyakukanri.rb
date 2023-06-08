@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class SaftaSoukyakukanri < FmRest::Layout('送客管理')
+class SaftaSoukyakukanri < FmRest::Layout('【カード】B_送客後ユーザー')
   self.fmrest_config = {
     host: ENV.fetch('FILEMAKER_HOST_SAFTA', nil),
     database: ENV.fetch('FILEMAKER_DB_SAFTA', nil),
     username: ENV.fetch('CLARIS_ID', nil),
-    password: ENV.fetch('CLARIS_PASS', nil)
+    password: ENV.fetch('CLARIS_PASS', nil),
   }
   attributes(
     media_name: 'F_外壁／防水',

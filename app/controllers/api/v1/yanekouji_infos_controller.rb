@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::YanekoujiInfosController < Api::V1::ApplicationController
-  MEDIA_NAME = '屋根見積りnet'
+  MEDIA_NAME = '屋根'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"position": "工事種別", "addr": "東京都新宿区1-1-1", "name": "名前", "tel": "012012345678" }}' "http://localhost:8000/api/v1/yanekouji_info"

@@ -2,7 +2,7 @@
 
 class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = 'リフォーム比較プロ'
+  MEDIA_NAME = 'リフォーム'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "東京都港区お台場1-2-3", "name": "山田太郎", "tel": "09012345678" }}' "http://localhost:8000/api/v1/reform_mitsumori"

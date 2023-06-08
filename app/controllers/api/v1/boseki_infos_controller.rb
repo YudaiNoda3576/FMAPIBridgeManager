@@ -2,7 +2,7 @@
 
 class Api::V1::BosekiInfosController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '墓石ナビ'
+  MEDIA_NAME = '墓石'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前", "tel": "0120123456", "work_type": "墓じまいをしたい" }}' "http://localhost:8000/api/v1/boseki_info"
