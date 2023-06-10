@@ -10,7 +10,8 @@ class Api::V1::BosuisController < Api::V1::ApplicationController
       media_name: MEDIA_NAME,
       prefecture: bosui_params[:addr],
       name: bosui_params[:name],
-      tel1: bosui_params[:tel]
+      tel1: bosui_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

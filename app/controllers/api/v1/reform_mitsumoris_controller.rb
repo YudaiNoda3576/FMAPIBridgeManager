@@ -10,7 +10,8 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
       media_name: MEDIA_NAME,
       prefecture: reform_mitsumori_params[:addr],
       name: reform_mitsumori_params[:name],
-      tel1: reform_mitsumori_params[:tel]
+      tel1: reform_mitsumori_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

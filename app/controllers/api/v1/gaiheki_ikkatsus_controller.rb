@@ -10,7 +10,8 @@ class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
       media_name: MEDIA_NAME,
       prefecture: gaiheki_ikkatsu_params[:addr],
       name: gaiheki_ikkatsu_params[:name],
-      tel1: gaiheki_ikkatsu_params[:tel]
+      tel1: gaiheki_ikkatsu_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

@@ -12,7 +12,8 @@ class Api::V1::BosuiIkkatsusController < Api::V1::ApplicationController
       building_type: bosui_ikkatsu_params[:building_type],
       prefecture: bosui_ikkatsu_params[:addr],
       name: bosui_ikkatsu_params[:name],
-      tel1: bosui_ikkatsu_params[:tel]
+      tel1: bosui_ikkatsu_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

@@ -10,7 +10,8 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
       media_name: MEDIA_NAME,
       prefecture: kaitaikoji_net_params[:addr],
       name: kaitaikoji_net_params[:name],
-      tel1: kaitaikoji_net_params[:tel]
+      tel1: kaitaikoji_net_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
