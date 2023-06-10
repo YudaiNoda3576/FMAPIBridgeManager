@@ -28,6 +28,7 @@ class SaftaSoukyakukanri < FmRest::Layout('【カード】B_送客後ユーザ�
     cemetery_addr: '墓所住所',
     tel2: 'L_電話番号2',
     kana: 'I_フリガナ',
-    chat: 'チャット'
+    chat: 'チャット',
+    estimated_date: 'A_見積依頼日'
   )
 end

@@ -11,7 +11,8 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
       prefecture: gaiheki_info_params[:addr],
       name: gaiheki_info_params[:name],
       tel1: gaiheki_info_params[:tel],
-      chat: gaiheki_info_params[:chat]
+      chat: gaiheki_info_params[:chat],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

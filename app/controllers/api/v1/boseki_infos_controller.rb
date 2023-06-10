@@ -10,7 +10,8 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
       media_name: MEDIA_NAME,
       name: boseki_info_params[:name],
       tel1: boseki_info_params[:tel],
-      work_type: boseki_info_params[:work_type]
+      work_type: boseki_info_params[:work_type],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

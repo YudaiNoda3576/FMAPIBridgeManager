@@ -9,7 +9,8 @@ class Api::V1::ReienInfosController < Api::V1::ApplicationController
     data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       name: reien_info_params[:name],
-      tel1: reien_info_params[:tel]
+      tel1: reien_info_params[:tel],
+      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
