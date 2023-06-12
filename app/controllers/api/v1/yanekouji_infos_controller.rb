@@ -11,7 +11,7 @@ class Api::V1::YanekoujiInfosController < Api::V1::ApplicationController
       prefecture: yanekouji_info_params[:addr],
       name: yanekouji_info_params[:name],
       tel1: yanekouji_info_params[:tel],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

@@ -13,7 +13,7 @@ class Api::V1::KaitaiHikakusController < Api::V1::ApplicationController
       name: kaitai_hikaku_params[:name],
       tel1: kaitai_hikaku_params[:tel],
       customer_request: kaitai_hikaku_params[:mitsumori],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
