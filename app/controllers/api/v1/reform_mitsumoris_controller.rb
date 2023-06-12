@@ -11,7 +11,7 @@ class Api::V1::ReformMitsumorisController < Api::V1::ApplicationController
       prefecture: reform_mitsumori_params[:addr],
       name: reform_mitsumori_params[:name],
       tel1: reform_mitsumori_params[:tel],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

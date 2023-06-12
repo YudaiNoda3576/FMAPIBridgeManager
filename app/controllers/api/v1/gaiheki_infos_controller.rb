@@ -12,7 +12,7 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
       name: gaiheki_info_params[:name],
       tel1: gaiheki_info_params[:tel],
       chat: gaiheki_info_params[:chat],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

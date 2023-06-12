@@ -5,13 +5,13 @@ class Api::V1::BosuisController < Api::V1::ApplicationController
   MEDIA_NAME = '防水'
 
   def create
-    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "愛知県名古屋市中区1-1-1", "name": "織田信長", "tel": "0120123456" }}' "http://localhost:8000/api/v1/bosui"
+    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "愛知県名古屋市中区1-1-1", "name": "織田信長", "tel": "0120123456" }}' "http://a:a@localhost:8000/api/v1/bosui"
     data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       prefecture: bosui_params[:addr],
       name: bosui_params[:name],
       tel1: bosui_params[:tel],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

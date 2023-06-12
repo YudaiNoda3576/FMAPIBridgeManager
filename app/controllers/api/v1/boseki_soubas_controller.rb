@@ -15,7 +15,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
       cemetery_addr: "#{boseki_souba_params[:cf_pref]} #{boseki_souba_params[:cf_address]}",
       email: boseki_souba_params[:cf_email],
       customer_request: boseki_souba_params[:cf_misc],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す

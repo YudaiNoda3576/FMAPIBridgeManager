@@ -17,7 +17,7 @@ class Api::V1::GenjoHikakusController < Api::V1::ApplicationController
       tel1: genjo_hikaku_params[:tel],
       tel2: genjo_hikaku_params[:mobile],
       email: genjo_hikaku_params[:email],
-      estimated_date: Time.zone.today.strftime("%m/%y/%Y")
+      estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
     render json: { status: :ok, record_id: data.record_id } # Filemaker の record_id を返す
