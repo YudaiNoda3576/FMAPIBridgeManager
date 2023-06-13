@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resource :boseki_souba, only: %i[create]
       resource :genjo_hikaku, only: %i[create update]
       resource :reform_mitsumori, only: %i[create update]
-      resource :kaitai_hikaku, only: %i[create]
+      resource :kaitai_hikaku, only: %i[create update]
       resource :reien_info, only: %i[create]
       resource :bosui, only: %i[create update]
       resource :bosui_large, only: %i[create]
