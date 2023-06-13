@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resource :reien_info, only: %i[create]
       resource :bosui, only: %i[create update]
       resource :bosui_large, only: %i[create]
+      resource :tenpo_design, only: %i[create update]
       get 'debug/records_by_media_name', to: 'debug#records_by_media_name'
     end
   end
