@@ -29,6 +29,8 @@ class SunlifeSoukyakukanri < FmRest::Layout('【カード】B_送客後ユーザ
     tel2: 'L_電話番号2',
     kana: 'I_フリガナ',
     chat: 'チャット',
+    situation: '物件状況',
+    store_type: '店舗業種',
     estimated_date: 'A_見積依頼日'
   )
 end
