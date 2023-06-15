@@ -2,7 +2,7 @@
 
 class Api::V1::BosuiLargesController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '防水大規模'
+  MEDIA_NAME = '防水'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"building_type": "アパート", "position": "屋上", "area": "100平米","addr": "岐阜県岐阜市1-1-1", "name": "斉藤道三", "kana": "さいとうどうさん",  "tel1": "0120123456", "tel2": "0120123456", "email": "test@test"}}' "http://a:a@localhost:8000/api/v1/bosui_large"
