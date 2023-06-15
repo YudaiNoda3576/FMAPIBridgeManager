@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resource :gaiheki_ikkatsu, only: %i[create update]
       resource :yanekouji_info, only: %i[create update]
       resource :kaitaikoji_net, only: %i[create update]
-      resource :boseki_souba, only: %i[create]
+      resource :boseki_souba, only: %i[create update]
       resource :genjo_hikaku, only: %i[create update]
       resource :reform_mitsumori, only: %i[create update]
       resource :kaitai_hikaku, only: %i[create update]
