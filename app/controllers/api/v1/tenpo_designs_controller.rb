@@ -2,7 +2,7 @@
 
 class Api::V1::TenpoDesignsController < Api::V1::ApplicationController
   # TODO: メディア名をメディア計算式の値に合わせる
-  MEDIA_NAME = '店舗デザイン'
+  MEDIA_NAME = '店舗内装'
 
   def create
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"name": "名前 , 会社名", "addr": "住所", "tel": "0120123456",  "mitsumori": "要望"}}' "http://localhost:8000/api/v1/tenpo_design"
