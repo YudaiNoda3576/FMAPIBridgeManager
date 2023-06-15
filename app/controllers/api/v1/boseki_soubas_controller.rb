@@ -12,7 +12,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
       cemetery_name: boseki_souba_params[:cf_gyard],
       name: boseki_souba_params[:cf_name],
       tel1: boseki_souba_params[:cf_phone],
-      cemetery_addr: "#{boseki_souba_params[:cf_pref]} #{boseki_souba_params[:cf_address]}",
+      cemetery_addr: "#{boseki_souba_params[:cf_pref]}#{boseki_souba_params[:cf_address]}",
       email: boseki_souba_params[:cf_email],
       customer_request: boseki_souba_params[:cf_misc],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
@@ -24,10 +24,30 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
     render json: { status: 500, error: "Failure: #{e}" }
   end
 
+  def update
+    data = SunlifeSoukyakukanri.find(boseki_souba_params[:record_id])
+    data.update(update_params(data))
+    render json: { status: :ok, record_id: data.record_id } 
+  rescue StandardError => e
+    Rails.logger.error e
+    render json: { status: 500, error: "Failure: #{e}" }
+  end
+
   private
 
   def boseki_souba_params
     params.require(:data).permit(:record_id, :cf_ctype, :cf_gyard, :cf_name,
-                                 :cf_phone, :cf_pref, :cf_address, :cf_email, :cf_misc)
+                                 :cf_phone, :cf_pref, :cf_address, :cf_email, :cf_misc, :cf_contact_time, :cf_contact_remark)
+  end
+
+  def update_params(data)
+    {
+      prefecture: "#{data.prefecture}#{boseki_souba_params[:cf_address]}" || data.prefecture,
+      contact_time: boseki_souba_params[:cf_contact_time] || data.contact_time,
+      contact_note: boseki_souba_params[:cf_contact_remark] || data.contact_note,
+      cf_email: boseki_souba_params[:cf_email] || data.email,
+      customer_request: boseki_souba_params[:cf_misc] || data.customer_request,
+      work_date: boseki_souba_params[:cf_ctype] || data.work_date,
+    }
   end
 end
