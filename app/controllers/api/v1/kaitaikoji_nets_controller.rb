@@ -22,7 +22,7 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
 
   def update
     # curl -X PATCH -H 'Content-Type: application/json' -d '{"data": {"record_id": "245586", "building_type": "マンション" }}' "http://localhost:8000/api/v1/kaitaikoji_net"
-    # ページ遷移するごとにキー名が変わっていきます、bilding_type, position, area, email, mitsumori
+    # ページ遷移するごとにキー名が変わっていきます、bilding_type, kana, area, email, mitsumori  ※kanaは建物の階数
     data = SaftaSoukyakukanri.find(kaitaikoji_net_params[:record_id])
     data.update(update_params(data))
     render json: { status: :ok, record_id: data.record_id }
@@ -34,7 +34,7 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
   private
 
   def kaitaikoji_net_params
-    params.require(:data).permit(:record_id, :addr, :name, :tel, :building_type, :position, :area, :email, :mitsumori)
+    params.require(:data).permit(:record_id, :addr, :name, :tel, :building_type, :position, :area, :email, :mitsumori, :kana)
   end
 
   def update_params(data)
@@ -44,6 +44,7 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
       area: kaitaikoji_net_params[:area] || data.area,
       email: kaitaikoji_net_params[:email] || data.email,
       customer_request: kaitaikoji_net_params[:mitsumori] || data.customer_request
+      floor: kaitaikoji_net_params[:kana] || data.floor,
     }
   end
 end
