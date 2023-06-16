@@ -43,7 +43,7 @@ class Api::V1::KaitaikojiNetsController < Api::V1::ApplicationController
       construction_type: kaitaikoji_net_params[:position] || data.construction_type,
       area: kaitaikoji_net_params[:area] || data.area,
       email: kaitaikoji_net_params[:email] || data.email,
-      customer_request: kaitaikoji_net_params[:mitsumori] || data.customer_request
+      customer_request: kaitaikoji_net_params[:mitsumori] || data.customer_request,
       floor: kaitaikoji_net_params[:kana] || data.floor,
     }
   end
