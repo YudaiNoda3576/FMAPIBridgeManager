@@ -11,6 +11,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
       name: boseki_info_params[:name],
       tel1: boseki_info_params[:tel],
       work_type: boseki_info_params[:work_type],
+      cemetery_name: boseki_info_params[:cemetery_name],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
