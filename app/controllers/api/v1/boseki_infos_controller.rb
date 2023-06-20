@@ -12,6 +12,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
       tel1: boseki_info_params[:tel],
       work_type: boseki_info_params[:work_type],
       cemetery_name: boseki_info_params[:cemetery_name],
+      chat: boseki_info_params[:chat],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
@@ -36,7 +37,7 @@ class Api::V1::BosekiInfosController < Api::V1::ApplicationController
 
   def boseki_info_params
     params.require(:data).permit(:record_id, :name, :tel, :work_type, :cemetery_name, :cemetery_addr, :addr, :area, :work_date,
-                                 :mitsumori, :email)
+                                 :mitsumori, :email, :chat)
   end
 
   def update_params(data)
