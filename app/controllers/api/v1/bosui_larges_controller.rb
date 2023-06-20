@@ -12,11 +12,13 @@ class Api::V1::BosuiLargesController < Api::V1::ApplicationController
       construction_type: bosui_large_params[:position],
       area: bosui_large_params[:area],
       prefecture: bosui_large_params[:addr],
+      customer_request: bosui_large_params[:mitsumori],
       name: bosui_large_params[:name],
       kana: bosui_large_params[:kana],
       tel1: bosui_large_params[:tel1],
       tel2: bosui_large_params[:tel2],
       email: bosui_large_params[:email],
+      chat: bosui_large_params[:chat],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
@@ -29,6 +31,6 @@ class Api::V1::BosuiLargesController < Api::V1::ApplicationController
   private
 
   def bosui_large_params
-    params.require(:data).permit(:record_id, :addr, :name, :building_type, :position, :area, :email, :kana, :tel1, :tel2)
+    params.require(:data).permit(:record_id, :addr, :name, :building_type, :position, :area, :email, :kana, :tel1, :tel2, :mitsumori, :chat)
   end
 end
