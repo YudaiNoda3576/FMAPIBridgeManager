@@ -5,13 +5,14 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
   MEDIA_NAME = '外壁'
 
   def create
-    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "青森県弘前市", "name": "名前", "tel": "0120123456", "chat": "LINE（ライン）"}}' "http://localhost:8000/api/v1/gaiheki_info"
+    # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"addr": "青森県弘前市", "name": "名前", "tel": "0120123456", "incentive": "問い合わせのきっかけ", "chat": "LINE（ライン）"}}' "http://localhost:8000/api/v1/gaiheki_info"
     data = SaftaSoukyakukanri.new(
       media_name: MEDIA_NAME,
       prefecture: gaiheki_info_params[:addr],
       name: gaiheki_info_params[:name],
       tel1: gaiheki_info_params[:tel],
       chat: gaiheki_info_params[:chat],
+      incentive: gaiheki_info_params[:incentive],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
@@ -36,7 +37,7 @@ class Api::V1::GaihekiInfosController < Api::V1::ApplicationController
 
   def gaiheki_info_params
     params.require(:data).permit(:record_id, :addr, :name, :tel, :chat, :building_type, :position, :work_date, :company, :mitsumori,
-                                 :area, :email)
+                                 :area, :email, :incentive)
   end
 
   def update_params(data)

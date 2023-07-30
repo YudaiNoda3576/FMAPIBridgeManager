@@ -29,6 +29,7 @@ class SaftaSoukyakukanri < FmRest::Layout('【カード】B_送客後ユーザ�
     tel2: 'L_電話番号2',
     kana: 'I_フリガナ',
     chat: 'チャット',
-    estimated_date: 'A_見積依頼日'
+    estimated_date: 'A_見積依頼日',
+    incentive: 'お問い合わせのきっかけ'
   )
 end
