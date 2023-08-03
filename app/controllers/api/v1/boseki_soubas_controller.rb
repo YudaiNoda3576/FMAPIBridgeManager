@@ -37,17 +37,17 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
 
   def boseki_souba_params
     params.require(:data).permit(:record_id, :cf_ctype, :cf_gyard, :cf_name,
-                                 :cf_phone, :cf_pref, :cf_address, :cf_email, :cf_misc, :cf_contact_time, :cf_contact_remark)
+                                 :cf_phone, :cf_pref, :cf_address, :cf_email, :cf_misc, :cf_contact_time, :cf_contact_remark, :mitsumori, :contact_time, :contact_remark, :email, :work_date, :cemetery_addr)
   end
 
   def update_params(data)
     {
-      prefecture: "#{data.prefecture}#{boseki_souba_params[:cf_address]}" || data.prefecture,
-      contact_time: boseki_souba_params[:cf_contact_time] || data.contact_time,
-      contact_note: boseki_souba_params[:cf_contact_remark] || data.contact_note,
-      cf_email: boseki_souba_params[:cf_email] || data.email,
-      customer_request: boseki_souba_params[:cf_misc] || data.customer_request,
-      work_date: boseki_souba_params[:cf_ctype] || data.work_date,
+      prefecture: "#{data.prefecture}#{boseki_souba_params[:cf_address] || boseki_souba_params[:cemetery_addr]}" || data.prefecture,
+      contact_time: boseki_souba_params[:cf_contact_time] || boseki_souba_params[:contact_time] || data.contact_time,
+      contact_note: boseki_souba_params[:cf_contact_remark] || boseki_souba_params[:contact_remark] ||data.contact_note,
+      cf_email: boseki_souba_params[:cf_email] || boseki_souba_params[:email] || data.email,
+      customer_request: boseki_souba_params[:cf_misc] || boseki_souba_params[:mitsumori] || data.customer_request,
+      work_date: boseki_souba_params[:cf_ctype] || boseki_souba_params[:work_date] || data.work_date,
     }
   end
 end
