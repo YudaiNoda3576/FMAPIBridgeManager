@@ -12,7 +12,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
       cemetery_name: boseki_souba_params[:cf_gyard],
       name: boseki_souba_params[:cf_name],
       tel1: boseki_souba_params[:cf_phone],
-      cemetery_addr: "#{boseki_souba_params[:cf_pref]}#{boseki_souba_params[:cf_address]}",
+      cemetery_addr: boseki_souba_params[:cf_pref],
       email: boseki_souba_params[:cf_email],
       customer_request: boseki_souba_params[:cf_misc],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
@@ -42,7 +42,7 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
 
   def update_params(data)
     {
-      prefecture: "#{data.prefecture}#{boseki_souba_params[:cf_address] || boseki_souba_params[:cemetery_addr]}" || data.prefecture,
+      cemetery_addr: "#{data.cemetery_addr}#{boseki_souba_params[:cf_address] || boseki_souba_params[:cemetery_addr]}" || data.cemetery_addr,
       contact_time: boseki_souba_params[:cf_contact_time] || boseki_souba_params[:contact_time] || data.contact_time,
       contact_note: boseki_souba_params[:cf_contact_remark] || boseki_souba_params[:contact_remark] ||data.contact_note,
       cf_email: boseki_souba_params[:cf_email] || boseki_souba_params[:email] || data.email,
