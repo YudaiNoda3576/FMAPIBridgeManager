@@ -8,11 +8,11 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
     # curl -X POST -H 'Content-Type: application/json' -d '{"data": {"cf_ctype":"新たにお墓を建てたい","cf_gyard":"わかりません", "cf_name": "名前", "cf_phone": "0120123456", "cf_pref":"東京", "cf_address":"新宿区", "cf_email":"test.mail", "cf_misc" : "100万円"}}' "http://localhost:8000/api/v1/boseki_souba"
     data = SunlifeSoukyakukanri.new(
       media_name: MEDIA_NAME,
-      construction_type: boseki_souba_params[:cf_ctype],
+      work_type: boseki_souba_params[:cf_ctype],
       cemetery_name: boseki_souba_params[:cf_gyard],
       name: boseki_souba_params[:cf_name],
       tel1: boseki_souba_params[:cf_phone],
-      cemetery_addr: "#{boseki_souba_params[:cf_pref]}#{boseki_souba_params[:cf_address]}",
+      cemetery_addr: boseki_souba_params[:cf_pref],
       email: boseki_souba_params[:cf_email],
       customer_request: boseki_souba_params[:cf_misc],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
@@ -42,10 +42,10 @@ class Api::V1::BosekiSoubasController < Api::V1::ApplicationController
 
   def update_params(data)
     {
-      prefecture: "#{data.prefecture}#{boseki_souba_params[:cf_address] || boseki_souba_params[:cemetery_addr]}" || data.prefecture,
+      cemetery_addr: "#{data.cemetery_addr}#{boseki_souba_params[:cf_address] || boseki_souba_params[:cemetery_addr]}" || data.cemetery_addr,
       contact_time: boseki_souba_params[:cf_contact_time] || boseki_souba_params[:contact_time] || data.contact_time,
       contact_note: boseki_souba_params[:cf_contact_remark] || boseki_souba_params[:contact_remark] ||data.contact_note,
-      cf_email: boseki_souba_params[:cf_email] || boseki_souba_params[:email] || data.email,
+      email: boseki_souba_params[:cf_email] || boseki_souba_params[:email] || data.email,
       customer_request: boseki_souba_params[:cf_misc] || boseki_souba_params[:mitsumori] || data.customer_request,
       work_date: boseki_souba_params[:cf_ctype] || boseki_souba_params[:work_date] || data.work_date,
     }
