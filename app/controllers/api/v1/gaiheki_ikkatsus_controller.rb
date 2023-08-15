@@ -11,6 +11,9 @@ class Api::V1::GaihekiIkkatsusController < Api::V1::ApplicationController
       prefecture: gaiheki_ikkatsu_params[:addr],
       name: gaiheki_ikkatsu_params[:name],
       tel1: gaiheki_ikkatsu_params[:tel],
+      construction_type: gaiheki_ikkatsu_params[:position],
+      building_type: gaiheki_ikkatsu_params[:building_type],
+      customer_request: gaiheki_ikkatsu_params[:mitsumori],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save

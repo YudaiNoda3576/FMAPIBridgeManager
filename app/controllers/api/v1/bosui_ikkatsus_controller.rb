@@ -13,6 +13,7 @@ class Api::V1::BosuiIkkatsusController < Api::V1::ApplicationController
       prefecture: bosui_ikkatsu_params[:addr],
       name: bosui_ikkatsu_params[:name],
       tel1: bosui_ikkatsu_params[:tel],
+      customer_request: bosui_ikkatsu_params[:mitsumori],
       estimated_date: Time.zone.today.strftime("%m/%d/%Y")
     )
     data.save
